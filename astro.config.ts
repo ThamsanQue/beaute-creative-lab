@@ -7,7 +7,11 @@ export default defineConfig({
   output: "hybrid",
   site: "https://beautecreativelab.online",
   integrations: [sitemap()],
-  adapter: vercel(),
+  adapter: vercel({
+    isr: {
+      exclude: ["/src/pages/api/*", "/src/pages/[slug].astro"],
+    },
+  }),
   vite: {
     resolve: {
       alias: {
