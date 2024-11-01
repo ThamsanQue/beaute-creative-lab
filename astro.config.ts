@@ -1,17 +1,13 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "hybrid",
+  output: "server",
   site: "https://beautecreativelab.online",
-  // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
-  build: {
-    //
-  },
-  server: {
-    port: 3000,
-  },
+  integrations: [sitemap()],
+  adapter: vercel(),
   vite: {
     resolve: {
       alias: {
@@ -20,5 +16,4 @@ export default defineConfig({
       },
     },
   },
-  integrations: [sitemap()],
 });
