@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 
+const { SITE_URL } = import.meta.env;
 export const POST: APIRoute = async ({ request }) => {
   try {
     // Verify the webhook is from Ghost (you should add proper verification)
@@ -18,12 +19,9 @@ export const POST: APIRoute = async ({ request }) => {
     await Promise.all(
       paths.map(async (path) => {
         try {
-          await fetch(
-            `${import.meta.env.SITE_URL}/api/revalidate?path=${path}`,
-            {
-              method: "POST",
-            },
-          );
+          await fetch(`${SITE_URL}/api/revalidate?path=${path}`, {
+            method: "POST",
+          });
         } catch (err) {
           console.error(`Failed to revalidate ${path}:`, err);
         }

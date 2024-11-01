@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-
+const { SITE_URL } = import.meta.env;
 export const POST: APIRoute = async ({ request }) => {
   try {
     const url = new URL(request.url);
@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Clear the cache for this path
-    await fetch(`${import.meta.env.SITE_URL}${path}`, {
+    await fetch(`${SITE_URL}${path}`, {
       method: "HEAD",
       headers: {
         "Cache-Control": "no-cache",
