@@ -3,7 +3,8 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://mysite.com",
+  output: "hybrid",
+  site: "https://beautecreativelab.online",
   // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
   build: {
     //
