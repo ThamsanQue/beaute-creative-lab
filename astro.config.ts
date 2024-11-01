@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [sitemap()],
   adapter: vercel({
     isr: {
-      exclude: ["/src/pages/api/*", "/src/pages/[slug].astro"],
+      exclude: ["/api/*", "/[slug].astro"],
     },
   }),
   vite: {
